@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docsmith · AI Document Assistant</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<section id="auth" hidden>
+  <form id="auth-form" class="auth-card">
+    <h1>Docsmith</h1>
+    <p class="sub">Upload PDFs and ask questions. Answers cite the page they came from.</p>
+    <input id="a-name" placeholder="Full name" autocomplete="name" hidden>
+    <input id="a-email" type="email" placeholder="Email" autocomplete="email" required>
+    <input id="a-pass" type="password" placeholder="Password (8+ characters)" autocomplete="current-password" required>
+    <p id="a-err" class="err" role="alert"></p>
+    <button id="a-submit" type="submit">Sign in</button>
+    <button id="a-toggle" type="button" class="link">Create an account</button>
+  </form>
+</section>
+
+<section id="app" hidden>
+  <aside id="side">
+    <div class="brand"><span>Docsmith</span><button id="logout" class="link">Sign out</button></div>
+    <div class="block">
+      <h2>Documents</h2>
+      <label class="upload">Upload PDF<input id="file" type="file" accept="application/pdf" hidden></label>
+      <p id="up-status" class="hint"></p>
+      <ul id="docs" class="list"></ul>
+      <p class="hint">Every upload is checked for copied or repeated content. Tick documents to limit answers to them; none ticked searches all.</p>
+    </div>
+    <div class="block grow">
+      <div class="row"><h2>Chats</h2><button id="new-chat" class="link">New chat</button></div>
+      <ul id="convs" class="list"></ul>
+    </div>
+  </aside>
+  <main>
+    <div id="messages" aria-live="polite"></div>
+    <form id="chat-form">
+      <textarea id="q" rows="1" placeholder="Ask about your documents…"></textarea>
+      <button type="submit" id="send">Ask</button>
+    </form>
+  </main>
+</section>
+<dialog id="report" aria-labelledby="r-title">
+  <div id="report-body"></div>
+  <div class="dlg-actions">
+    <button id="r-confirm" hidden>Upload anyway</button>
+    <button id="r-close" class="ghost">Close</button>
+  </div>
+</dialog>
+<script src="/static/app.js"></script>
+</body>
+</html>
